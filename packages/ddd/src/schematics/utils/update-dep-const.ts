@@ -1,32 +1,26 @@
-import { SchematicContext, Tree } from '@angular-devkit/schematics';
 import { checkRuleExists } from './check-rule-exists';
+import { Tree } from '@nrwl/devkit';
 
 export function updateDepConst(
-  host: Tree,
-  context: SchematicContext,
+  tree: Tree,
   update: (depConst: Array<object>) => void
 ) {
   let filePath = 'tslint.json';
   let rule = 'nx-enforce-module-boundaries';
 
-  if (!host.exists('tslint.json')) {
-    if (host.exists('.eslintrc.json')) {
+  if (!tree.exists('tslint.json')) {
+    if (tree.exists('.eslintrc.json')) {
       filePath = '.eslintrc.json';
       rule = '@nrwl/nx/enforce-module-boundaries';
-      context.logger.info('Found .eslintrc.json');
-    } else if (host.exists('.eslintrc')) {
+    } else if (tree.exists('.eslintrc')) {
       filePath = '.eslintrc';
       rule = '@nrwl/nx/enforce-module-boundaries';
-      context.logger.info('Did not find .eslintrc.json but found .eslintrc');
     } else {
-      context.logger.info(
-        'Cannot add linting rules: linting config file does not exist'
-      );
       return;
     }
   }
 
-  const text = host.read(filePath).toString();
+  const text = tree.read(filePath).toString();
   const json = JSON.parse(text);
   let rules = json;
   if (rules['overrides']) {
@@ -36,11 +30,11 @@ export function updateDepConst(
     );
   }
 
-  if (!checkRuleExists(filePath, rule, rules, context)) return;
+  if (!checkRuleExists(filePath, rule, rules)) return;
 
   const depConst = rules['rules'][rule][1]['depConstraints'] as Array<object>;
   update(depConst);
 
   const newText = JSON.stringify(json, undefined, 2);
-  host.overwrite(filePath, newText);
+  tree.write(filePath, newText);
 }

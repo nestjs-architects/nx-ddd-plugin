@@ -1,36 +1,26 @@
 import { SchematicContext } from '@angular-devkit/schematics';
 
-export function checkRuleExists(
-  filePath: string,
-  rule: string,
-  rules: object,
-  context: SchematicContext
-) {
+export function checkRuleExists(filePath: string, rule: string, rules: object) {
   if (!rules['rules']) {
-    context.logger.info(`${filePath}: rules expected`);
-    return false;
+    throw new Error(`${filePath}: rules expected`);
   }
 
   if (!rules['rules'][rule]) {
-    context.logger.info(`${filePath}: ${rule} expected`);
-    return false;
+    throw new Error(`${filePath}: ${rule} expected`);
   }
 
   if (rules['rules'][rule]['length'] < 2) {
-    context.logger.info(`${filePath}: ${rule}.1 unexpected`);
-    return false;
+    throw new Error(`${filePath}: ${rule}.1 unexpected`);
   }
 
   if (!rules['rules'][rule][1]['depConstraints']) {
-    context.logger.info(`${filePath}: ${rule}.1.depConstraints expected.`);
-    return false;
+    throw new Error(`${filePath}: ${rule}.1.depConstraints expected.`);
   }
 
   if (!Array.isArray(rules['rules'][rule][1]['depConstraints'])) {
-    context.logger.info(
+    throw new Error(
       `${filePath}: ${rule}.1.depConstraints expected to be an array.`
     );
-    return false;
   }
 
   return true;
