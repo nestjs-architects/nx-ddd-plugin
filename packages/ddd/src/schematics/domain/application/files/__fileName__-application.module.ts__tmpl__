@@ -1,7 +1,9 @@
 import { DynamicModule, Module, ModuleMetadata } from '@nestjs/common';
+<% if(cqrs) { %>import { CqrsModule } from '@nestjs/cqrs';<% } %>
 import { <%= className %>ApplicationService } from './<%= fileName %>-application.service';
 
 @Module({
+<% if(cqrs) { %>imports: [CqrsModule],<% } %>
 providers: [<%= className %>ApplicationService],
 exports: [<%= className %>ApplicationService],
 })

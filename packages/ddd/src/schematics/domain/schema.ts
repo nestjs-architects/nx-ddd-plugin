@@ -15,9 +15,13 @@ export interface Schema {
    */
   directory?: string;
   /**
+   * Use CQRS in Application Module
+   */
+  cqrs?: boolean;
+  /**
    * A type to determine if and how to build libraries.
    */
-  type?: 'internal' | 'buildable' | 'publishable';
+  type?: "internal" | "buildable" | "publishable";
   /**
    * For publishable libs: Official package name used in import statements
    */

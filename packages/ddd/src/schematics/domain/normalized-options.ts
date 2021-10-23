@@ -9,4 +9,5 @@ export interface NormalizedOptions {
   importPath: string;
   fileName: string;
   domainRoot: string;
+  cqrs: boolean
 }

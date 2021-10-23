@@ -14,6 +14,7 @@ export function createFiles(tree: Tree, options: NormalizedOptions): void {
     tmpl: '',
     offsetFromRoot: offsetFromRoot(options.domainRoot),
     className: options.className,
+    cqrs: options.cqrs
   };
   generateFiles(
     tree,

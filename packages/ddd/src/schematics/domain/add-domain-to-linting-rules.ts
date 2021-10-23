@@ -2,7 +2,6 @@
  * addDomainToLintingRules
  * @param domainName name of the domain that is being included in the tslint.json
  */
-import { SchematicContext } from '@angular-devkit/schematics';
 import { updateDepConst } from '../utils/update-dep-const';
 import { Tree } from '@nrwl/devkit';
 

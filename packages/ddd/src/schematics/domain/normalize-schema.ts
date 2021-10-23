@@ -27,5 +27,6 @@ export function normalizeSchema(tree: Tree, schema: Schema): NormalizedOptions {
     domainRoot: libFolderPath,
     className: strings.classify(domainNameAndDirectoryDasherized),
     workspacePrefix: npmScope,
+    cqrs: schema.cqrs
   };
 }

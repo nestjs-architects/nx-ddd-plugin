@@ -16,6 +16,11 @@
       "type": "string",
       "description": "Subpath of the domain within libs directory"
     },
+    "cqrs": {
+      "type": "boolean",
+      "description": "Use CQRS in Application Module",
+      "default": false
+    },
     "type": {
       "type": "string",
       "enum": ["internal", "buildable", "publishable"],
