@@ -1,68 +1,22 @@
-import { strings } from '@angular-devkit/core';
 import { Schema } from './schema';
-import { chain, externalSchematic, Rule } from '@angular-devkit/schematics';
+import { shell } from './shell';
+import { convertNxGenerator, Tree } from '@nrwl/devkit';
+import { normalizeSchema } from './normalize-schema';
+import { application } from './application';
+import { domain } from './domain';
+import { infrastructure } from './infrastructure';
 
-export default function(schema: Schema): Rule {
-
-  const {domainNameAndDirectory, domainName} = parseSchema(schema);
-  return chain([
-    externalSchematic('@nrwl/nest', 'lib', {
-      name: 'domain',
-      directory: domainNameAndDirectory,
-      tags: `domain:${domainName},type:domain`,
-      publishable: schema.type === 'publishable',
-      buildable: schema.type === 'buildable',
-      importPath: schema.importPath,
-      strict: true
-    }),
-    externalSchematic('@nrwl/nest', 'lib', {
-      name: 'application',
-      directory: domainNameAndDirectory,
-      tags: `domain:${domainName},type:application`,
-      publishable: schema.type === 'publishable',
-      buildable: schema.type === 'buildable',
-      importPath: schema.importPath,
-      strict: true,
-      service: true
-    }),
-    externalSchematic('@nrwl/nest', 'lib', {
-      name: 'infrastructure',
-      directory: domainNameAndDirectory,
-      tags: `domain:${domainName},type:infrastructure`,
-      publishable: schema.type === 'publishable',
-      buildable: schema.type === 'buildable',
-      importPath: schema.importPath,
-      strict: true
-    }),
-    externalSchematic('@nrwl/nest', 'lib', {
-      name: 'shell',
-      directory: domainNameAndDirectory,
-      tags: `domain:${domainName},type:shell`,
-      publishable: schema.type === 'publishable',
-      buildable: schema.type === 'buildable',
-      importPath: schema.importPath,
-      strict: true
-    })
-  ])
+export async function domainGenerator(
+  tree: Tree,
+  schema: Schema
+): Promise<void> {
+  const normalizedOptions = normalizeSchema(tree, schema);
+  await shell(tree, normalizedOptions);
+  await application(tree, normalizedOptions);
+  await domain(tree, normalizedOptions);
+  await infrastructure(tree, normalizedOptions);
 }
 
-function parseSchema(schema:Schema): CalculatedOptions {
-  const domainName = strings.dasherize(schema.name);
-  const domainNameAndDirectory = schema.directory
-    ? `${schema.directory}/${domainName}`
-    : domainName;
-  const domainNameAndDirectoryDasherized = strings
-    .dasherize(domainNameAndDirectory)
-    .split('/')
-    .join('-');
-  const libFolderPath = `libs/${domainNameAndDirectory}`;
-  const libLibFolder = `${libFolderPath}/domain/src/lib`;
+const domainSchematic = convertNxGenerator(domainGenerator);
 
-  return {
-    domainName,
-    domainNameAndDirectory
-  }
-}
-
-
-interface CalculatedOptions {domainNameAndDirectory: string, domainName: string}
+export default domainSchematic;

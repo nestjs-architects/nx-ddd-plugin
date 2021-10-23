@@ -5,20 +5,14 @@
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "packages/ddd/**/*.ts"
-        ]
+        "lintFilePatterns": ["packages/ddd/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/packages/ddd"
-      ],
+      "outputs": ["coverage/packages/ddd"],
       "options": {
         "jestConfig": "packages/ddd/jest.config.js",
         "passWithNoTests": true
@@ -26,9 +20,7 @@
     },
     "build": {
       "executor": "@nrwl/node:package",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/ddd",
         "tsConfig": "packages/ddd/tsconfig.lib.json",
@@ -36,6 +28,11 @@
         "main": "packages/ddd/src/index.ts",
         "assets": [
           "packages/ddd/*.md",
+          {
+            "glob": "src/schematics/domain/**/files/*",
+            "input": "./packages/ddd",
+            "output": "."
+          },
           "packages/ddd/generators.json"
         ]
       }

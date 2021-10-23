@@ -17,7 +17,7 @@ export interface Schema {
   /**
    * A type to determine if and how to build libraries.
    */
-  type?: "internal" | "buildable" | "publishable";
+  type?: 'internal' | 'buildable' | 'publishable';
   /**
    * For publishable libs: Official package name used in import statements
    */

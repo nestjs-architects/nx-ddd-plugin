@@ -1,0 +1,19 @@
+import { DynamicModule, Module, ModuleMetadata } from '@nestjs/common';
+import { <%= className %>ApplicationService } from './<%= fileName %>-application.service';
+
+@Module({
+providers: [<%= className %>ApplicationService],
+exports: [<%= className %>ApplicationService],
+})
+export class <%= className %>ApplicationModule {
+  static withInfrastructure(
+      infrastructure: ModuleMetadata['imports']
+  ): DynamicModule {
+    infrastructure = infrastructure ?? [];
+    return {
+      module: <%= className %>ApplicationModule,
+      imports: [...infrastructure],
+      providers: [],
+    };
+  }
+}
