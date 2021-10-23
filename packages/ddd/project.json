@@ -1,0 +1,34 @@
+{
+  "root": "packages/ddd",
+  "sourceRoot": "packages/ddd/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/ddd/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/ddd"],
+      "options": {
+        "jestConfig": "packages/ddd/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/ddd",
+        "tsConfig": "packages/ddd/tsconfig.lib.json",
+        "packageJson": "packages/ddd/package.json",
+        "main": "packages/ddd/src/index.ts",
+        "assets": ["packages/ddd/*.md"]
+      }
+    }
+  },
+  "tags": []
+}
