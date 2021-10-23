@@ -3,6 +3,11 @@
   "name": "@angular-architects/ddd",
   "version": "0.0.1",
   "schematics": {
+    "add": {
+      "factory": "./src/schematics/add/index",
+      "description": "adds initial access restrictions to linting rules",
+      "schema": "./src/schematics/add/schema.json"
+    },
     "domain": {
       "factory": "./src/schematics/domain/index",
       "schema": "./src/schematics/domain/schema.json",
