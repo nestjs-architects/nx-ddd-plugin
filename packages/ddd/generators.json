@@ -1,0 +1,12 @@
+{
+  "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "name": "@angular-architects/ddd",
+  "version": "0.0.1",
+  "schematics": {
+    "domain": {
+      "factory": "./src/schematics/domain/index",
+      "schema": "./src/schematics/domain/schema.json",
+      "description": "adds a domain including a domain, application and infrastructure libs, entries in nx.json, and linting rules in eslint.json"
+    }
+  }
+}

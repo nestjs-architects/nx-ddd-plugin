@@ -4,8 +4,9 @@
     "module": "commonjs",
     "outDir": "../../dist/out-tsc",
     "declaration": true,
-    "types": ["node"]
+    "types": ["node"],
+    "resolveJsonModule": true
   },
   "exclude": ["**/*.spec.ts"],
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts", "**/schema.json"]
 }

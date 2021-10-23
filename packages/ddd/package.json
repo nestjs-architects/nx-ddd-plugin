@@ -1,4 +1,8 @@
 {
+  "version": "1.0.0",
   "name": "@nestjs-architects/nx-ddd-plugin",
-  "version": "0.0.1"
+  "schematics": "./generators.json",
+  "scripts": {
+    "test": "node index.js"
+  }
 }

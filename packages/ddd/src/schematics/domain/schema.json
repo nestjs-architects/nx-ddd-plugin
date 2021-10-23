@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "domain-options",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Grouping name for the Domain",
+      "x-prompt": "What is the name of the domain?",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "directory": {
+      "type": "string",
+      "description": "Subpath of the domain within libs directory"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["internal", "buildable", "publishable"],
+      "description": "A type to determine if and how to build libraries.",
+      "default": "buildable"
+    },
+    "importPath": {
+      "type": "string",
+      "description": "For publishable libs: Official package name used in import statements"
+    }
+  },
+  "required": ["name"]
+}
