@@ -33,6 +33,11 @@
             "input": "./packages/ddd",
             "output": "."
           },
+          {
+            "glob": "assets/*",
+            "input": "./packages/ddd",
+            "output": "."
+          },
           "packages/ddd/generators.json"
         ]
       }
