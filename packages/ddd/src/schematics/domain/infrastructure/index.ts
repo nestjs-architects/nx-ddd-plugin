@@ -1,6 +1,8 @@
 import { NormalizedOptions } from '../normalized-options';
 import { Tree } from '@nrwl/devkit';
 import { libraryGenerator } from '@nrwl/nest';
+import { createFiles } from './create-files';
+import { deleteFiles } from './delete-files';
 
 export async function infrastructure(
   tree: Tree,
@@ -15,4 +17,6 @@ export async function infrastructure(
     importPath: options.importPath,
     strict: true,
   });
+  deleteFiles(tree, options);
+  createFiles(tree, options);
 }

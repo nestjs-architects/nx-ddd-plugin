@@ -1,5 +1,4 @@
 import { Schema } from './schema';
-import { shell } from './shell';
 import { convertNxGenerator, Tree } from '@nrwl/devkit';
 import { normalizeSchema } from './normalize-schema';
 import { application } from './application';
@@ -16,7 +15,6 @@ export async function domainGenerator(
 
   addDomainToLintingRules(tree, normalizedOptions.domainName);
 
-  await shell(tree, normalizedOptions);
   await application(tree, normalizedOptions);
   await domain(tree, normalizedOptions);
   await infrastructure(tree, normalizedOptions);

@@ -1,7 +1,7 @@
 # @nestjs-architects/nx-ddd-plugin -- DDD Plugin for Nx
 
 This plugin installs schematics which automate slicing your Nx workspace into domains and layers according to DDD nad
-Onion Architecture. Additionally, provides a coordination layer for NestJS's Dependency Injection called "Shell".
+Onion Architecture.
 
 ![domains and layers](https://github.com/nestjs-architects/nx-ddd-plugin/blob/main/packages/ddd/assets/graph.png?raw=true)
 
@@ -62,7 +62,7 @@ Furthermore, there are many options of the communication protocol you could want
 
 ## Contact
 
-Maciej Sikorski - [@MaciejSikorsk11](https://twitter.com/MaciejSikorsk11)
+Maciej Sikorski - [@_MaciejSikorski](https://twitter.com/_MaciejSikorski)
 , [LinkedIn](https://www.linkedin.com/in/maciej-sikorski-a01b26149/)
 
 ## More

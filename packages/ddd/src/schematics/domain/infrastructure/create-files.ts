@@ -19,7 +19,13 @@ export function createFiles(tree: Tree, options: NormalizedOptions): void {
   generateFiles(
     tree,
     joinPathFragments(__dirname, 'files'),
-    joinPathFragments(options.domainRoot, 'shell', 'src', 'lib'),
+    joinPathFragments(options.domainRoot, 'infrastructure', 'src'),
+    substitutions
+  );
+  generateFiles(
+    tree,
+    joinPathFragments(__dirname, 'files', 'lib'),
+    joinPathFragments(options.domainRoot, 'infrastructure', 'src', 'lib'),
     substitutions
   );
 }

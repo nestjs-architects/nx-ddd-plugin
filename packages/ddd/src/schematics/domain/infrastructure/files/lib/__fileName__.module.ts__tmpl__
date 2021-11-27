@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { <%= className %>ApplicationModule } from '<%= domainPath %>/application';
-import { <%= className %>InfrastructureModule } from '<%= domainPath %>/infrastructure';
+import { <%= className %>InfrastructureModule } from './<%= fileName %>-infrastructure.module';
 
 @Module({
   imports: [<%= className %>ApplicationModule.withInfrastructure([<%= className %>InfrastructureModule])],
   exports: [<%= className %>ApplicationModule]
 })
-export class <%= className %>ShellModule {}
+export class <%= className %>Module {}

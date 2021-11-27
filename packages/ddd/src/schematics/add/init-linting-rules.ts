@@ -33,17 +33,6 @@ export function initLintingRules(tree: Tree): void {
         'type:infrastructure',
         'type:domain',
         'type:application',
-        'type:shell',
-      ],
-    });
-
-    depConst.push({
-      sourceTag: 'type:shell',
-      onlyDependOnLibsWithTags: [
-        'type:application',
-        'type:infrastructure',
-        'type:domain',
-        'type:util',
       ],
     });
 

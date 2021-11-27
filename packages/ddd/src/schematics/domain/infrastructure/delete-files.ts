@@ -6,10 +6,9 @@ export function deleteFiles(tree: Tree, options: NormalizedOptions): void {
   tree.delete(
     joinPathFragments(
       options.domainRoot,
-      'shell',
+      'infrastructure',
       'src',
-      'lib',
-      `${options.fileName}-shell.module.ts`
+      `index.ts`
     )
   );
 }

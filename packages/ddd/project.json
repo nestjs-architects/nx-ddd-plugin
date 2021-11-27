@@ -29,7 +29,7 @@
         "assets": [
           "packages/ddd/*.md",
           {
-            "glob": "src/schematics/domain/**/files/*",
+            "glob": "src/schematics/domain/**/files/**/*",
             "input": "./packages/ddd",
             "output": "."
           },
