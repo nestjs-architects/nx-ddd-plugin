@@ -26,20 +26,20 @@ npm i -D @nestjs-architects/nx-ddd-plugin
 Initialize linting rules
 
 ```
-nx g @nesjts-architects/nx-ddd-plugin:add
+nx g @nestjs-architects/nx-ddd-plugin:add
 ```
 
 Add domains:
 
 ```
-nx g @nestjs-architects/ddd:domain adoption
+nx g @nestjs-architects/nx-ddd-plugin:domain adoption
 ```
 
 If you have a fullstack workspace you can separate those libraries from that for frontend by providing a grouping
 directory
 
 ```
-nx g @nestjs-architects/ddd:domain adoption --directory server
+nx g @nestjs-architects/nx-ddd-plugin:domain adoption --directory server
 ```
 
 ## Generated Structure
